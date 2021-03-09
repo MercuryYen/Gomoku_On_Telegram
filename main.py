@@ -295,6 +295,11 @@ def process_result(self,update,job_queue):
 						reply_markup = button)
 
 
+def about(bot,update):
+	bot.sendMessage(chat_id = update.message.chat.id,
+					text="Author:@Homura343\nChannel:https://t.me/ArumohChannel\nChannel Group:https://t.me/ArumohChannelGroup\nGithub:https://github.com/Mescury/Gomoku_On_Telegram\n")
+
+
 
 @app.route('/hook', methods=['POST'])
 def webhook_handler():
@@ -308,12 +313,14 @@ def webhook_handler():
 
 
 
+
 # New a dispatcher for bot
 dispatcher = Dispatcher(bot, None)
 
 # Add handler for handling message, there are many kinds of message. For this handler, it particular handle text
 # message.
 dispatcher.add_handler(CommandHandler('new',new))
+dispatcher.add_handler(CommandHandler('about',about))
 dispatcher.add_handler(CallbackQueryHandler(process_result, pass_job_queue=True))
 if __name__ == "__main__":
 	# Running server
