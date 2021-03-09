@@ -1,0 +1,1 @@
+replace "XXXXXXXX" in "config.ini" with your bot's token
